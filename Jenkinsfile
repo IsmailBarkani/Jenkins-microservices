@@ -21,7 +21,7 @@ pipeline {
 		}
 	}
 
-	poste{
+	post{
 		always{
 			echo "Always run this"
 		}

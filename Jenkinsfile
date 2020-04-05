@@ -20,4 +20,17 @@ pipeline {
 			}
 		}
 	}
+
+	poste{
+		always{
+			echo "Always run this"
+		}
+		success{
+			echo "run the API"
+		}
+		failure{
+			echo "Clean"
+		}
+
+	}
 }

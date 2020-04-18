@@ -5,13 +5,13 @@ pipeline{
 
 	environment{
 		dockerHome = tool 'myDocker'
-		mavenHome = tool 'myMaven'
-		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
+		//mavenHome = tool 'myMaven'
+		PATH = "$dockerHome/bin:$PATH"
 	}
 	stages{
 		stage('Build'){
 			steps{
-				sh 'mvn --version'
+				//sh 'mvn --version'
 				sh 'docker version'
 				echo 'Build'
 				echo  "Path - $PATH"

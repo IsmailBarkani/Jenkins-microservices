@@ -43,6 +43,36 @@ pipeline{
 				}
 			}
 		}
+		
+		//Packaging stage
+		stage('Package'){
+			steps{
+				withMaven(maven:'myMaven'){
+					bat 'mvn package -DskipTests'
+				}
+			}
+		}
+
+		//Build docker image
+		stage('Build docker Image'){
+			steps{
+				script{
+					dockerImage = docker.build("oncobe/currency-exchange-devops:${env.BUILD_TAG}")
+				}
+			}
+		}
+
+		//Push Docker Image
+		stage('Push Docker Image'){
+			steps{
+				script{
+					docker.withRegistry('', 'dockerhub'){
+						dockerImage.push();
+						dockerImage.push('latest');
+					}
+				}
+			}
+		}
 	} 
 	post {
 		always {

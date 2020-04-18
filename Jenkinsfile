@@ -11,7 +11,9 @@ pipeline{
 	stages{
 		stage('Build'){
 			steps{
-				bat "${mavenHome}/bin/mvn -B verify"
+				withMaven(maven : 'myMaven') {
+						bat 'mvn test'
+				}
 				//bat 'mvn --version'
 				bat 'docker version'
 				echo 'Build'

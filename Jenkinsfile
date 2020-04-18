@@ -19,5 +19,16 @@ pipeline{
 				echo 'Integration Test'
 			}
 		}
+	} 
+	post {
+		always {
+			echo 'The service is running'
+		}
+		success {
+			echo 'The service is running: Success'
+		}
+		failure {
+			echo 'The service is running: Failure'
+		}
 	}
 }

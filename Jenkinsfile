@@ -35,16 +35,6 @@ pipeline{
 				}
 			}
 		}
-
-		//Unit Test stage
-		stage('Unit Test'){	
-			steps{
-				withMaven(maven: 'myMaven'){
-					bat 'mvn test'
-				}
-			}
-		}
-
 		//Integration test stage
 		stage('Integration Test'){
 			steps{

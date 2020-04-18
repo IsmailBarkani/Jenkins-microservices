@@ -12,7 +12,7 @@ pipeline{
 		stage('Build'){
 			steps{
 				withMaven(maven : 'myMaven') {
-						bat 'mvn test'
+						bat 'mvn --version'
 				}
 				//bat 'mvn --version'
 				bat 'docker version'

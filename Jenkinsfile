@@ -11,7 +11,14 @@ pipeline{
 	stages{
 		stage('Build'){
 			steps{
-				bat 'mvn --version'
+				def os = System.properties['os.name'].toLowerCase()
+    			echo "OS: ${os}"
+    			if (os.contains("linux")) {
+    			  sh "mvn install" 
+    			} else {
+    			  bat "mvn install"
+    			}
+				//bat 'mvn --version'
 				bat 'docker version'
 				echo 'Build'
 				echo  "Path - $PATH"
